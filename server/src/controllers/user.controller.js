@@ -100,3 +100,7 @@ const getInfo = async (req, res) => {
     }
 };
 
+export default { singIn, 
+    singUp, 
+    updatePassword, 
+    getInfo };

@@ -31,3 +31,5 @@ const tmdbApi = {
         tmdbEndPoints.personMedias({ personId })
     ),
 }
+
+export default tmdbApi;
