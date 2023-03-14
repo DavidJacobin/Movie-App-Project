@@ -30,6 +30,9 @@ const tmdbApi = {
     personMedias: async ({ personId }) => await axiosClient.get(
         tmdbEndPoints.personMedias({ personId })
     ),
+    personDetails: async ({ personId }) => await axiosClient.get(
+        tmdbEndPoints.personMedias({ personId })
+    ),
 }
 
 export default tmdbApi;
