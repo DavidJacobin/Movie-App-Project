@@ -21,7 +21,7 @@ router.post(
         }),
     body("password")
         .exists().withMessage("Password is required!")
-        .isLength({ min: 8 }.withMessage("Password must be atleast 8 characters!"))
+        .isLength({ min: 8 }).withMessage("Password must be atleast 8 characters!")
         .custom((value, { req }) => {
             if (value !== req.body.password) throw new Error("Passwords don't match!");
 
