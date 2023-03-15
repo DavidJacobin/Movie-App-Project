@@ -97,6 +97,7 @@ router.post(
         .exists().withMessage("Media Poster can not be empty!"),
     body("mediaRate")
         .exists().withMessage("Media Rate can not be empty!"),
+    requestHandler.validate,
     favoriteController.addFavourite
 );
 
