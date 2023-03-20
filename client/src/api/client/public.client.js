@@ -14,7 +14,7 @@ publicClient.interceptors.request.use(async config => {
     return {
         ...config,
         headers: {
-            "Content-Type": 'app;ication/json',
+            "Content-Type": 'application/json',
         }
     }
 })
