@@ -43,13 +43,6 @@ const userApi = {
             return { err }
         }
     },
-    singIn: async ({ username, password }) => {
-        try {
-
-        } catch (err) {
-            return { err }
-        }
-    },
     passwordUpdate: async ({ password, newPassword, confirmNewPassword }) => {
         try {
             const response = await privateClient.post(
