@@ -9,8 +9,7 @@ import ReviewList from "../pages/ReviewList";
 import ProtectPage from "../components/common/ProtectedPage.jsx";
 
 
-
-export const routesGen = {
+const routesGen = {
     home: "/",
     mediaList: (type) => `/${type}`,
     mediaDetail: (type, id) => `/${type}/${id}`,
@@ -74,4 +73,9 @@ const routes = [
     }
 ];
 
-export default routes;
+const routers = {
+    routes,
+    routesGen
+}
+
+export default routers;
