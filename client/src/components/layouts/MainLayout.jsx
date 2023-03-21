@@ -1,27 +1,30 @@
-import {Box} from "@mui/material";
-import { Outlet} from "react-router-dom"
+import { Box } from "@mui/material";
+import { Outlet } from "react-router-dom"
+import Footer from "../common/Footer";
 import GlobalLoading from "../common/GlobalLoading";
+import TopBar from "../common/TopBar";
 
 const MainLayout = () => {
   return (
     <>
-    {/*globalloading */}
-    <GlobalLoading/>
-    {/*globalloading */}
-    <Box display="flex" minHeight="100vh">
+      {/*globalloading */}
+      <GlobalLoading />
+      {/*globalloading */}
+      <Box display="flex" minHeight="100vh">
+        {/*topBar */}
+        <TopBar />
+        <Box
+          component="main"
+          flexGrow={1}
+          overflow="hidden"
+          minHeight="100vh"
+        >
 
-      <Box
-        component="main"
-        flexGrow={1}
-        overflow="hidden"
-        minHeight="100vh"
-      >
+          <Outlet />
+        </Box>
 
-        <Outlet/>
       </Box>
-
-    </Box>
-    
+      <Footer />
     </>
   )
 }
