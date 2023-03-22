@@ -23,6 +23,7 @@ const GlobalLoading = () => {
         <>
             <Paper
                 variant="outlined"
+                
                 sx={{
                     opacity: isLoading ? 1 : 0,
                     pointerEvents: "none",
