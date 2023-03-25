@@ -1,4 +1,4 @@
-import {LogoutOutlined} from "@mui/icons-material/LogoutOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import {ListItemButton, ListItemIcon, ListItemText, Menu, Typography } from "@mui/material";
 import {useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
@@ -48,11 +48,20 @@ const UserMenu = () => {
                         <ListItemText disableTypography
                          primary={
                             <Typography textTransform="uppercase">{item.display}</Typography>
-                         }>
-                         </ListItemText>
+                         }/>
 
                     </ListItemButton>
                 ))}
+                <ListItemButton
+                sx={{borderRadius: "10px"}}
+                onClick={ () => dispatch(setUser(null))}
+                >
+                <ListItemIcon><LogoutOutlinedIcon/></ListItemIcon>
+                <ListItemText
+                disableTypography
+                primary={<Typography textTransform="uppercase"> Sing Out</Typography>}
+                />
+                </ListItemButton>
             </Menu>
 
         </>

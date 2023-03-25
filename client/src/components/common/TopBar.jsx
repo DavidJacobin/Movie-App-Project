@@ -42,7 +42,9 @@ const TopBar = () => {
     const onSwitchMode = () => {
         const theme = themeModes === themeMode.dark ? themeMode.light : themeMode.dark;
         dispathc(setMode(theme))
-    }
+    };
+
+    const toggleSideBar = () => setSidebarOpen(!sidebarOpen)
 
     return (
         <>
@@ -52,25 +54,30 @@ const TopBar = () => {
                 <Toolbar sx={{ alignItems: "center", justifyContent: "space-between" }}>
 
                     <Stack direction="row" spacing={1} alignItems="center">
-                        <IconButton color="inherit"
-                            sx={{ mr: 3, display: { md: "none" } }}
+                        <IconButton
+                            color="inherit"
+                            sx={{
+                                mr: 3,
+                                display: { md: "none" }
+                            }}
+                            onClick={toggleSideBar}
                         >
                             <MenuIcon />
 
                         </IconButton>
-                        <Box sx={{display: {xs: "inline-block", md: "none"}}}>
-                            <Logo/>
+                        <Box sx={{ display: { xs: "inline-block", md: "none" } }}>
+                            <Logo />
 
                         </Box>
 
                     </Stack>
 
                     <Box flexGrow={10} alignItems="center" display={{ sx: "none", md: "flex", }}>
-                        <Box sx={{marginRight: "30px"}}>
-                            <Logo/>
+                        <Box sx={{ marginRight: "30px" }}>
+                            <Logo />
                         </Box>
-                        
-                        
+
+
                         {menuConfigs.main.map((item, index) => (
                             <Button
                                 key={index}
@@ -87,7 +94,21 @@ const TopBar = () => {
                         ))}
 
                     </Box>
-                        <UserMenu/>
+                    <Stack
+                        spacing={3}
+                        direction="row"
+                        alignItems="center"
+                    >
+                        {!user &&
+                            <Button
+                                variant="contained"
+                                onClick={() => dispathc(setAuthModalOpen(true))}
+                            >
+                                Sing In
+                            </Button>
+                        }
+                    </Stack>
+                    {user && <UserMenu />}
                 </Toolbar>
 
             </AppBar>
