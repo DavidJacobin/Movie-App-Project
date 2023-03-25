@@ -7,7 +7,7 @@ import { cloneElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import menuConfigs from '../../configs/menu.config.js';
 import { themeMode } from '../../configs/theme.config.js';
-import { setAuthModalOpen } from '../../redux/features/authModalSlice.js';
+import { setAuthModalOpen} from '../../redux/features/authModalSlice';
 import { setMode } from '../../redux/features/modeSlice.js';
 import Logo from './Logo'
 import UserMenu from "./UserMenu.jsx";
@@ -100,8 +100,7 @@ const TopBar = () => {
                         direction="row"
                         alignItems="center"
                     >
-                        {!user &&
-                            <Button
+                        {!user && <Button
                                 variant="contained"
                                 onClick={() => dispathc(setAuthModalOpen(true))}
                             >
