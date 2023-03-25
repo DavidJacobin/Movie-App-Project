@@ -22,8 +22,7 @@ const GlobalLoading = () => {
     return (
         <>
             <Paper
-                variant="outlined"
-                
+                elevation={1}
                 sx={{
                     opacity: isLoading ? 1 : 0,
                     pointerEvents: "none",

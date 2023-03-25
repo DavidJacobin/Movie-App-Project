@@ -11,7 +11,7 @@ import { setAuthModalOpen} from '../../redux/features/authModalSlice';
 import { setMode } from '../../redux/features/modeSlice.js';
 import Logo from './Logo'
 import UserMenu from "./UserMenu.jsx";
-import SideBar from "./SideBar.jsx";
+
 
 // const ScrollBar = ({ children, window }) => {
 //     const themeMode  = useSelector((state) => state.themeMode);
@@ -49,7 +49,7 @@ const TopBar = () => {
 
     return (
         <>
-            {/*<SideBar open={sidebarOpen} toggleSideBar={toggleSideBar} /> */}
+            
             <AppBar elevation={0} sx={{ zIndex: 9999 }}>
 
                 <Toolbar sx={{ alignItems: "center", justifyContent: "space-between" }}>

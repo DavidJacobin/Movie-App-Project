@@ -13,7 +13,7 @@ const MainLayout = () => {
       {/*globalloading */}
 
       {/* login */}
-      <AuthModal/>
+      <AuthModal />
       {/* login */}
 
       <Box display="flex" minHeight="100vh">
