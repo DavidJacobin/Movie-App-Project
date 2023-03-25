@@ -10,6 +10,7 @@ import { themeMode } from '../../configs/theme.config.js';
 import { setAuthModalOpen } from '../../redux/features/authModalSlice.js';
 import { setMode } from '../../redux/features/modeSlice.js';
 import Logo from './Logo'
+import UserMenu from "./UserMenu.jsx";
 
 // const ScrollBar = ({ children, window }) => {
 //     const themeMode  = useSelector((state) => state.themeMode);
@@ -52,18 +53,24 @@ const TopBar = () => {
 
                     <Stack direction="row" spacing={1} alignItems="center">
                         <IconButton color="inherit"
-                            sx={{ mr: 2, display: { md: "none" } }}
+                            sx={{ mr: 3, display: { md: "none" } }}
                         >
                             <MenuIcon />
 
                         </IconButton>
+                        <Box sx={{display: {xs: "inline-block", md: "none"}}}>
+                            <Logo/>
+
+                        </Box>
 
                     </Stack>
 
                     <Box flexGrow={10} alignItems="center" display={{ sx: "none", md: "flex", }}>
-                        <Box sx={{ marginLeft: "10px" }}>
-                            <Logo />
+                        <Box sx={{marginRight: "30px"}}>
+                            <Logo/>
                         </Box>
+                        
+                        
                         {menuConfigs.main.map((item, index) => (
                             <Button
                                 key={index}
@@ -73,12 +80,14 @@ const TopBar = () => {
                                 }}
                                 component={Link}
                                 to={item.path}
+                                variant={appState.includes(item.state) ? "contained" : "text"}
                             >
                                 {item.display}
                             </Button>
                         ))}
-                    </Box>
 
+                    </Box>
+                        <UserMenu/>
                 </Toolbar>
 
             </AppBar>
