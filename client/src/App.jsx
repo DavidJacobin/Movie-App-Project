@@ -8,6 +8,8 @@ import MainLayout from "./components/layouts/MainLayout.jsx";
 import routers from "./routes/routes.jsx"
 import PageWrapper from "./components/common/PageWrepper.jsx"
 
+import "react-toastify/dist/ReactToastify.css"
+
 const App = () => {
   const themeMode  = useSelector((state) => state.themeMode)
 

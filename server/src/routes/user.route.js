@@ -9,46 +9,42 @@ import tokenMiddleware from "../middlewares/token.middleware.js";
 const router = express.Router();
 
 router.post(
-    '/singup',
+    "/signup",
     body("username")
-        .exists().withMessage("Username is required!")
-        .isLength({ min: 8 }).withMessage("Username must be atleast 8 characters!")
-        .custom(async value => {
-            const user = await userModel.findOne({ username: value });
-
-            if (user) return Promise.reject("Username allredy taken!");
-
-        }),
+      .exists().withMessage("username is required")
+      .isLength({ min: 8 }).withMessage("username minimum 8 characters")
+      .custom(async value => {
+        const user = await userModel.findOne({ username: value });
+        if (user) return Promise.reject("username already used");
+      }),
     body("password")
-        .exists().withMessage("Password is required!")
-        .isLength({ min: 8 }).withMessage("Password must be atleast 8 characters!")
-        .custom((value, { req }) => {
-            if (value !== req.body.password) throw new Error("Passwords don't match!");
-
-            return true
-        }),
+      .exists().withMessage("password is required")
+      .isLength({ min: 8 }).withMessage("password minimum 8 characters"),
+    body("confirmPassword")
+      .exists().withMessage("confirmPassword is required")
+      .isLength({ min: 8 }).withMessage("confirmPassword minimum 8 characters")
+      .custom((value, { req }) => {
+        if (value !== req.body.password) throw new Error("confirmPassword not match");
+        return true;
+      }),
     body("displayName")
-        .exists().withMessage("Display Name is required!")
-        .isLength({ min: 4 }).withMessage("Display Name must be atleast 4 characters!"),
-
+      .exists().withMessage("displayName is required")
+      .isLength({ min: 8 }).withMessage("displayName minimum 8 characters"),
     requestHandler.validate,
-    userController.singUp
-
-);
-
-
+    userController.signup
+  );
+  
 router.post(
-    '/singin',
+    "/signin",
     body("username")
-        .exists().withMessage("Username is required!")
-        .isLength({ min: 8 }).withMessage("Username should be atleast 8 characters!"),
+      .exists().withMessage("username is required")
+      .isLength({ min: 8 }).withMessage("username minimum 8 characters"),
     body("password")
-        .exists().withMessage("Password is required!")
-        .isLength({ min: 8 }).withMessage("Password should be atleast 8 characters!"),
-
+      .exists().withMessage("password is required")
+      .isLength({ min: 8 }).withMessage("password minimum 8 characters"),
     requestHandler.validate,
-    userController.singIn
-);
+    userController.signin
+  );
 
 router.put(
     '/update-password',

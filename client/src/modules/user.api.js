@@ -1,60 +1,52 @@
-import privateClient from '../api/client/private.client.js';
-import publicClient from '../api/client/public.client.js';
+import privateClient from "../api/client/private.client";
+import publicClient from "../api/client/public.client";
 
 const userEndpoints = {
-    singIn: "user/singin",
-    singUp: "user/singup",
-    getInfo: "user/info",
-    passwordUpdated: "user/update-password",
-    getFavorites: "user/favorites",
-    addFavorites: "user/favorites",
+  signin: "user/signin",
+  signup: "user/signup",
+  getInfo: "user/info",
+  passwordUpdate: "user/update-password"
 };
 
 const userApi = {
-    singIn: async ({ username, password }) => {
-        try {
-            const response = await publicClient.post(
-                userEndpoints.singIn,
-                { username, password }
-            );
+  signin: async ({ username, password }) => {
+    try {
+      console.log("send request");
+      const response = await publicClient.post(
+        userEndpoints.signin,
+        { username, password }
+      );
 
-            return { response };
-        } catch (err) {
-            return { err }
-        }
-    },
-    singUp: async ({ username, password, confirmPassword, displayName }) => {
-        try {
-            const response = await publicClient.post(
-                userEndpoints.singUp,
-                { username, password, confirmPassword, displayName }
-            );
-            return { response };
-        } catch (err) {
-            return { err }
-        }
-    },
-    getInfo: async ({ }) => {
-        try {
-            const response = await publicClient.get(userEndpoints.getInfo)
+      return { response };
+    } catch (err) { console.log("err"); return { err }; }
+  },
+  signup: async ({ username, password, confirmPassword, displayName }) => {
+    try {
+      const response = await publicClient.post(
+        userEndpoints.signup,
+        { username, password, confirmPassword, displayName }
+      );
 
-            return { response }
-        } catch (err) {
-            return { err }
-        }
-    },
-    passwordUpdate: async ({ password, newPassword, confirmNewPassword }) => {
-        try {
-            const response = await privateClient.post(
-                userEndpoints.passwordUpdated,
-                { password, newPassword, confirmNewPassword }
-            )
+      return { response };
+    } catch (err) { return { err }; }
+  },
+  getInfo: async () => {
+    try {
+      const response = await privateClient.get(userEndpoints.getInfo);
 
-            return { response }
-        } catch (err) {
-            return { err }
-        }
-    },
-}
+      return { response };
+    } catch (err) { return { err }; }
+  },
+  passwordUpdate: async ({ password, newPassword, confirmNewPassword }) => {
+    try {
+      const response = await privateClient.put(
+        userEndpoints.passwordUpdate,
+        { password, newPassword, confirmNewPassword }
+      );
+
+      return { response };
+    } catch (err) { return { err }; }
+  }
+};
 
 export default userApi;
