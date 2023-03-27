@@ -16,11 +16,7 @@ const SideBar = ({ open, toggleSidebar }) => {
 
     const drawer = (
         <>
-            {/*<Toolbar sx={{ paddingY: "20px", color: "text.primary" }}>
-                <Stack width="100%" direction="row" justifyContent="center">
-                    <Logo />
-                </Stack>
-            </Toolbar>*/}
+            
 
             <List sx={{ paddingX: "30px" }}>
                 <Typography variant='h6' marginBottom="20px">MENU</Typography>
