@@ -1,5 +1,5 @@
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import {ListItemButton, ListItemIcon, ListItemText, Menu, Typography } from "@mui/material";
+import {ListItemButton, ListItemIcon, ListItemText, Menu, Typography, MenuList, IconButton } from "@mui/material";
 import {useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
@@ -8,7 +8,8 @@ import {setUser} from "../../redux/features/userSlice";
 
 
 const UserMenu = () => {
-    const user = useSelector((state) => state.user);
+    const { appState } = useSelector((state) => state.appState);
+    const {user} = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
 
@@ -28,8 +29,13 @@ const UserMenu = () => {
                 }}
                 onClick={toggleMenu}
             >
-
-                {user.displayName}
+                
+                <IconButton
+                sx={{
+                    color: appState ? "primary.contrastText" : "inherit",
+                    mr: 2
+                }}
+                >Menu</IconButton>
             </Typography>
             <Menu
             open={Boolean(anchorEl)}
