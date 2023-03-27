@@ -16,7 +16,7 @@ const Rate = ({value}) => {
             value={value * 10}
             color="success"
             size={50}
-            >
+            />
                 <Box
                 sx={{
                    position: "absolute",
@@ -39,7 +39,7 @@ const Rate = ({value}) => {
                     </Typography>
 
                 </Box>
-            </CircularProgress>
+            
 
         </Box>
     )

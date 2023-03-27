@@ -1,5 +1,5 @@
 import PlayArrow from '@mui/icons-material/PlayArrow';
-import {Box, Button, Chip, Divider, Stack, Typography} from '@mui/material';
+import {Box, Button, Chip, CircularProgress, Divider, Stack, Typography, useTheme} from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {Autoplay} from 'swiper';
@@ -17,7 +17,7 @@ import genreApi from '../../modules/genre.api';
 import mediaApi from '../../modules/media.api'
 
 const HeroSlide = ({mediaType, mediaCategory}) => {
-
+    const theme = useTheme();
     const dispatch = useDispatch();
 
     const [movies, setMovies] = useState([]);
@@ -69,7 +69,8 @@ const HeroSlide = ({mediaType, mediaCategory}) => {
                 bottom: 0,
                 left: 0,
                 zIndex: 2,
-                pointerEvents: "none"
+                pointerEvents: "none",
+                ...uiConfig.style.gradientBgImage[theme.palette.mode]
             }
         }}
         >
@@ -88,7 +89,7 @@ const HeroSlide = ({mediaType, mediaCategory}) => {
                         <Box
                         sx={{
                             paddingTop: {
-                                xs:"130%",
+                                xs:"100%",
                                 sm: "80%",
                                 md: "60%",
                                 lg: "45%"
@@ -97,10 +98,73 @@ const HeroSlide = ({mediaType, mediaCategory}) => {
                             backgroundSize: "cover",
                             backgroundImage: `url(${tmdbConfigs
                                 .backdropPath(movie.backdropPath || movie.poster_path)})`
-                        }}
-                        >
+                        }}/>
+                            <Box
+                            sx={{
+                                width:"100%",
+                                height: "100%",
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                ...uiConfig.style.horizontalGradientBgImage[theme.palette.mode]
+                            }}
+                            />
 
-                        </Box>
+                            <Box
+                            sx={{
+                                width:"100%",
+                                height: "100%",
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                paddingX: {sm: "10px", md: "5rem", lg: "10rem"}
+                            }}
+                            >
+                                <Box
+                                sx={{
+                                    height: "100%",
+                                    display:"flex",
+                                    alignItems: "center",
+                                    paddingX: "30px",
+                                    color: "tex.primary",
+                                    width: {sm: "unset", md: "30%", lg: "40%"}
+                                }}
+                                >
+                                    <Stack spacing={4} direction="column">
+                                        {/*title */}
+                                        <Typography
+                                        variant='h4'
+                                        fontSize={{xs: "2rem", md: "2rem", lg: "4rem"}}
+                                        fontWeight="700px"
+                                        sx={{
+                                            ...uiConfig.style.typoLines(3)
+                                        }}
+                                        
+                                        >
+                                            {movie.title || movie.name}
+                                        </Typography>
+                                        {/*title */}
+
+                                        <Stack direction="row" spacing={1}>
+                                            {/*raiting */}
+                                            <Rate value={movie.vote_average}/>
+                                            <Divider orientation='vertical'/>
+                                            {[...movie.genre_ids].slice(0, 3).map((genreId, index) =>(
+                                                <Chip
+                                                variant='filled'
+                                                color='primary'
+                                                kay={index}
+                                                label={genre.find(e => e.id === genreId) 
+                                                    && genre.find(e => e.id === genreId).name}
+                                                />
+                                            ))}
+
+                                        </Stack>
+                                    </Stack>
+
+                                </Box>
+
+                            </Box>
 
                     </SwiperSlide>
                 ))}
