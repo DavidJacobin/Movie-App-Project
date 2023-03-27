@@ -12,7 +12,7 @@ const store = configureStore({
         authModal: authModalSlice,
         globalLoading: globalLoadingSlice,
         appState: appStateSlice
-    }
+    },
 });
 
 export default store;

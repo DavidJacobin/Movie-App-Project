@@ -31,7 +31,7 @@ const SigninForm = ({ switchAuthState }) => {
     onSubmit: async values => {
       setErrorMessage(undefined);
       setIsLoginRequest(true);
-      console.log("asdasdasdasd");
+      
       const { response, err } = await userApi.signin(values);
       setIsLoginRequest(false);
 
@@ -51,7 +51,7 @@ const SigninForm = ({ switchAuthState }) => {
       <Stack spacing={3}>
         <TextField
           type="text"
-          placeholder="username"
+          placeholder="Username"
           name="username"
           fullWidth
           value={signinForm.values.username}
@@ -62,7 +62,7 @@ const SigninForm = ({ switchAuthState }) => {
         />
         <TextField
           type="password"
-          placeholder="password"
+          placeholder="Password"
           name="password"
           fullWidth
           value={signinForm.values.password}
