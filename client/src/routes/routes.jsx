@@ -9,7 +9,7 @@ import ReviewList from "../pages/ReviewList";
 import ProtectPage from "../components/common/ProtectedPage.jsx";
 
 
-const routesGen = {
+export const routesGen = {
     home: "/",
     mediaList: (type) => `/${type}`,
     mediaDetail: (type, id) => `/${type}/${id}`,
@@ -19,6 +19,8 @@ const routesGen = {
     reviewList: "/reviews",
     passwordUpdate: "/password-update"
 };
+
+
 
 const routes = [
     {
