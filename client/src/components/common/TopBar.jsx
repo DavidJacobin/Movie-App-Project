@@ -54,6 +54,24 @@ const TopBar = () => {
 
                 <Toolbar sx={{ alignItems: "center", justifyContent: "space-between" }}>
 
+                    <Stack direction="row" spacing={1} alignItems="center">
+                        <IconButton
+                            color="inherit"
+                            sx={{
+                                mr: 3,
+                                display: { md: "none" }
+                            }}
+                            onClick={toggleSideBar}
+                        >
+                            
+                        </IconButton>
+                        <Box sx={{ display: { xs: "inline-block", md: "none" } }}>
+                            
+
+                        </Box>
+
+                    </Stack>
+
                     <Box flexGrow={10} alignItems="center" display={{ sx: "none", md: "flex", }}>
                         <Box sx={{ marginRight: "30px" }}>
                             <Logo />

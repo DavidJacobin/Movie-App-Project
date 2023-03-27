@@ -27,6 +27,20 @@ const MainLayout = () => {
       authUser();
     }, [dispatch])
     
+    useEffect(() => {
+        const getFavorite = async () => {
+            const {response, error} = await favoriteApi.getList();
+
+            if (response) dispatch(setListFavorites(response));
+            if (error) toast.error(error.message);
+
+        };
+
+        if (user) getFavorite();
+        if(!user) dispatch(setListFavorites([]))
+      
+    }, [user, dispatch])
+    
 
 
     return (

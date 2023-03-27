@@ -26,10 +26,10 @@ const UserMenu = () => {
                         sx={{ cursor: "pointer", userSelect: "none" }}
                         onClick={toggleMenu}
                     >
-                        <Button
+                        <Button 
                         variant="contained">
-                        {user.displayName}
 
+                        {user.displayName}
                         </Button>
                     </Typography>
                     <Menu
@@ -38,14 +38,22 @@ const UserMenu = () => {
                         onClose={() => setAnchorEl(null)}
                         PaperProps={{ sx: { padding: 0 } }}
                     >
-                        
-                        <Typography
-                        variant="h6"
-                        sx={{ cursor: "pointer", userSelect: "none" }}
-                        onClick={toggleMenu}
-                    >
-                        {user.displayName}
-                    </Typography>
+                        {menuConfigs.user.map((item, index) => (
+                            <ListItemButton
+                                variant="contained"
+                                component={Link}
+                                to={item.path}
+                                key={index}
+                                onClick={() => setAnchorEl(null)}
+                            >
+                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemText disableTypography
+                                    primary={
+                                        <Typography textTransform="uppercase">{item.display}</Typography>
+                                    } />
+
+                            </ListItemButton>
+                        ))}
                         <ListItemButton
                             sx={{ borderRadius: "10px" }}
                             onClick={() => dispatch(setUser(null))}

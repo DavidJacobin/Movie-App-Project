@@ -2,7 +2,7 @@ import tmdbConfig from "./tmdb.config.js";
 
 const tmdbEndPoints = {
     mediaList: ({ mediaType, mediaCategory, page }) => tmdbConfig.getUrl(
-        `${mediaType}/${mediaCategory}`, page
+        `${mediaType}/${mediaCategory}`, {page}
     ),
     mediaDetails: ({ mediaType, mediaId }) => tmdbConfig.getUrl(
         `${mediaType}/${mediaId}`
