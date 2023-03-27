@@ -69,7 +69,7 @@ router.put(
 router.get(
     "/info",
     tokenMiddleware.auth,
-    requestHandler.validate,
+    userController.getInfo,
 );
 
 router.get(

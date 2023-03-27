@@ -31,6 +31,6 @@ export default {
     badrequest,
     ok,
     created,
-    
+    unauthorized,
     notfound
 };

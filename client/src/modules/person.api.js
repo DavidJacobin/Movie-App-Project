@@ -1,4 +1,4 @@
-import publicCliant from "../api/client/public.client.js";
+import publicClient from "../api/client/public.client.js";
 
 const personEndpoints = {
     detail: ({ personId }) => `person/${personId}`,
@@ -8,14 +8,14 @@ const personEndpoints = {
 const personApi = {
     detail: async ({ personId }) => {
         try {
-            const response = await publicCliant.get(personEndpoints.detail({ personId }))
+            const response = await publicClient.get(personEndpoints.detail({ personId }))
 
             return { response }
         } catch (error) { return { error } }
     },
     medias: async ({ personId }) => {
         try {
-            const response = await publicCliant.get(personEndpoints.medias({ personId }))
+            const response = await publicClient.get(personEndpoints.medias({ personId }))
 
             return { response }
         } catch (error) { return { error } }

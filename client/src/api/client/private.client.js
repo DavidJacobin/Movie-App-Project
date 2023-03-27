@@ -1,7 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
-const baseURL = 'http://127.0.0.1:5000/api/v1/';
+const baseURL = 'http://127.0.0.1:5000/api/v1';
 
 
 const privateClient = axios.create({
@@ -22,10 +22,10 @@ privateClient.interceptors.request.use(async config => {
 });
 
 privateClient.interceptors.response.use((response) => {
-  if (response && response.data) return response.data;
+  if (response && response.data) return response;
   return response;
 }, (err) => {
-  throw err.response.data;
+  throw err.response;
 });
 
 export default privateClient;
