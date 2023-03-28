@@ -11,24 +11,25 @@ import { setAuthModalOpen} from '../../redux/features/authModalSlice';
 import { setMode } from '../../redux/features/modeSlice.js';
 import Logo from './Logo'
 import UserMenu from "./UserMenu.jsx";
+import SideBar from "./SideBar.jsx";
 
 
-// const ScrollBar = ({ children, window }) => {
-//     const themeMode  = useSelector((state) => state.themeMode);
+const ScrollBar = ({ children, window }) => {
+    const themeMode  = useSelector((state) => state.themeMode);
 
-//     const trigger = useScrollTrigger({
-//         disableHysteresis: true,
-//         threshold: 50,
-//         target: window ? window() : undefined
-//     })
+    const trigger = useScrollTrigger({
+        disableHysteresis: true,
+        threshold: 50,
+        target: window ? window() : undefined
+    })
 
-//     return cloneElement(children, {
-//         sx: {
-//             color: trigger ? "text.primary" : themeMode === themeMode.dark ? "primary.contrastText" : "text.primary",
-//             backgroundColor: trigger ? "backgrounde.paper" : themeMode === themeMode.dark ? "transparent" : "background.paper"
-//         }
-//     })
-// }
+    return cloneElement(children, {
+        sx: {
+            color: trigger ? "text.primary" : themeMode === themeMode.dark ? "primary.contrastText" : "text.primary",
+            backgroundColor: trigger ? "backgrounde.paper" : themeMode === themeMode.dark ? "transparent" : "background.paper"
+        }
+    })
+}
 
 const TopBar = () => {
 

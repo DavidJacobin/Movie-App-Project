@@ -135,10 +135,13 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
                                     {/*title */}
                                     <Typography
                                         variant='h4'
-                                        fontSize={{ xs: "2rem", md: "2rem", lg: "4rem" }}
+                                        
+                                        fontSize={{ xs: "0.5rem", md: "0.5rem", lg: "4rem" }}
                                         fontWeight="700px"
+                                        
                                         sx={{
-                                            ...uiConfig.style.typoLines(3)
+                                            ...uiConfig.style.typoLines(3),
+                                            whiteSpace: "0"
                                         }}
 
                                     >

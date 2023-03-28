@@ -23,7 +23,8 @@ const uiConfig = {
             display: "-webkit-box",
             overflow: "hidden",
             WebkitBoxOrient: "vertical",
-            WebkitLineClamp: lines
+            WebkitLineClamp: "lines"
+        
 
         }),
         mainContent: {
