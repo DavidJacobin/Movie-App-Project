@@ -61,7 +61,9 @@ const MediaDetail = () => {
 
 
     return (
-        <div>MediaDetail</div>
+        //<ImageHeader imgPath={tmdbConfigs.backdropPath(media.backdrop_path || media.poster_path)}/>
+        <>DETAILS</>
+        
     )
 }
 

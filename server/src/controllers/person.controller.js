@@ -6,7 +6,7 @@ const personDetails = async (req, res) => {
     try {
         const { personId } = req.params;
 
-        const person = await tmdbApi.personDetails({
+        const person = await tmdbApi.personDetail({
             personId
         });
 

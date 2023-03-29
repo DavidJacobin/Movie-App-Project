@@ -36,6 +36,6 @@ const mediaApi = {
         return { response };
       } catch (err) { return { err }; }
     }
-  };
+};
   
   export default mediaApi;

@@ -1,14 +1,14 @@
 import responseHandler from "../handlers/response.handler.js";
 import favoriteModel from "../models/favorite.model.js";
 
-const addFavourite = async (req, res) => {
+const addFavorite = async (req, res) => {
     try {
-        const isFavourite = await favoriteModel.findOne({
+        const isFavorite = await favoriteModel.findOne({
             user: req.user.id,
             mediaId: req.body.mediaId
         });
 
-        if (isFavourite) return responseHandler.ok(res, isFavourite);
+        if (isFavorite) return responseHandler.ok(res, isFavorite);
 
         const favorite = new favoriteModel({
             ...req.body,
@@ -26,7 +26,7 @@ const addFavourite = async (req, res) => {
 }
 
 
-const removeFavourite = async (req, res) => {
+const removeFavorite = async (req, res) => {
     try {
         const {favoriteId} = req.params;
 
@@ -47,7 +47,7 @@ const removeFavourite = async (req, res) => {
 };
 
 
-const getFavouriteOfUser = async (req, res) => {
+const getFavoriteOfUser = async (req, res) => {
     try {
         const favorite = await favoriteModel.findOne({user: req.user.id}).sort("-createdAt");
 
@@ -57,4 +57,4 @@ const getFavouriteOfUser = async (req, res) => {
     }
 };
 
-export default {getFavouriteOfUser, addFavourite, removeFavourite};
+export default {getFavouriteOfUser: getFavoriteOfUser, addFavourite: addFavorite, removeFavourite: removeFavorite};
