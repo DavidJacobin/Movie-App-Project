@@ -42,8 +42,7 @@ const search = async (req, res) => {
     });
 
     responseHandler.ok(res, response);
-  } catch(e) {
-    console.log(`media controller${e}`);
+  } catch {
     responseHandler.error(res);
   }
 };
