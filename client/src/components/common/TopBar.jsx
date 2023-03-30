@@ -6,9 +6,9 @@ import { AppBar, Box, Button, IconButton, Stack, Toolbar, useScrollTrigger } fro
 import { cloneElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import menuConfigs from '../../configs/menu.config.js';
-import { themeMode } from '../../configs/theme.config.js';
+import { themeModes } from '../../configs/theme.config';
 import { setAuthModalOpen} from '../../redux/features/authModalSlice';
-import { setMode } from '../../redux/features/modeSlice.js';
+import { setThemeMode } from '../../redux/features/modeSlice.js';
 import Logo from './Logo'
 import UserMenu from "./UserMenu.jsx";
 import SideBar from "./SideBar.jsx";
@@ -25,8 +25,8 @@ const ScrollBar = ({ children, window }) => {
 
     return cloneElement(children, {
         sx: {
-            color: trigger ? "text.primary" : themeMode === themeMode.dark ? "primary.contrastText" : "text.primary",
-            backgroundColor: trigger ? "backgrounde.paper" : themeMode === themeMode.dark ? "transparent" : "background.paper"
+            color: trigger ? "text.primary" : themeModes === themeModes.dark ? "primary.contrastText" : "text.primary",
+            backgroundColor: trigger ? "backgrounde.paper" : themeModes === themeModes.dark ? "transparent" : "background.paper"
         }
     })
 }
@@ -42,8 +42,8 @@ const TopBar = () => {
     const dispathc = useDispatch();
 
     const onSwitchMode = () => {
-        const theme = themeModes === themeMode.dark ? themeMode.light : themeMode.dark;
-        dispathc(setMode(theme))
+        const theme = themeModes === themeModes.dark ? themeModes.light : themeModes.dark;
+        dispathc(setThemeMode(theme))
     };
 
     const toggleSideBar = () => setSidebarOpen(!sidebarOpen)

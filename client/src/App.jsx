@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify"
 import { CssBaseline } from "@mui/material";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout.jsx";
-import routers from "./routes/routes.jsx"
+import routes from "./routes/routes.jsx"
 import PageWrapper from "./components/common/PageWrepper.jsx"
 
 import "react-toastify/dist/ReactToastify.css"
@@ -15,12 +15,11 @@ import "swiper/css/navigation";
 
 
 const App = () => {
-  const themeMode  = useSelector((state) => state.themeMode)
+  const { themeMode } = useSelector((state) => state.themeMode);
 
-  
   return (
-    <ThemeProvider theme={themeConfigs.custom({ mode: "dark" })}>
-
+    <ThemeProvider theme={themeConfigs.custom({ mode: themeMode })}>
+      {/* config toastify */}
       <ToastContainer
         position="bottom-left"
         autoClose={5000}
@@ -31,41 +30,38 @@ const App = () => {
         pauseOnHover
         theme={themeMode}
       />
-      <CssBaseline/> 
+      {/* mui reset css */}
+      <CssBaseline />
 
+      {/* app routes */}
       <BrowserRouter>
-
         <Routes>
-          <Route path="/" element={<MainLayout/>}>
-            {routers.routes.map((route, index) => (
+          <Route path="/" element={<MainLayout />}>
+            {routes.map((route, index) => (
               route.index ? (
                 <Route
-                index
-                key={index}
-                element={route.state ? (
-                  <PageWrapper state={route.state}>{route.element}</PageWrapper>
+                  index
+                  key={index}
+                  element={route.state ? (
+                    <PageWrapper state={route.state}>{route.element}</PageWrapper>
                   ) : route.element}
                 />
               ) : (
                 <Route
-                path={route.path}
-                key={index}
-                element={route.state ? (
-                  <PageWrapper state={route.state}>{route.element}</PageWrapper>
+                  path={route.path}
+                  key={index}
+                  element={route.state ? (
+                    <PageWrapper state={route.state}>{route.element}</PageWrapper>
                   ) : route.element}
-                /> 
+                />
               )
-            ))
-              
-            }
-
+            ))}
           </Route>
-
         </Routes>
-
       </BrowserRouter>
+      {/* app routes */}
     </ThemeProvider>
   );
-}
+};
 
 export default App;

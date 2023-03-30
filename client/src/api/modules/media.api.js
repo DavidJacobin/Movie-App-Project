@@ -1,5 +1,5 @@
-import privateClient from "../api/client/private.client.js";
-import publicClient from "../api/client/public.client.js";
+import privateClient from "../client/private.client";
+import publicClient from "../client/public.client";
 
 const mediaEndpoints = {
     list: ({ mediaType, mediaCategory, page }) => `${mediaType}/${mediaCategory}?page=${page}`,

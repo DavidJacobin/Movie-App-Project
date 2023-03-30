@@ -9,36 +9,39 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import uiConfigs from '../configs/ui.config';
-import tmdbConfigs from '../api/configs/tmdb.configs';
-import mediaApi from '../modules/media.api';
-import favoriteApi from '../modules/favorite.api'
+import uiConfigs from '../configs/ui.config.js';
+import tmdbConfigs from '../api/configs/tmdb.configs.js';
+import mediaApi from '../api/modules/media.api.js';
+import favoriteApi from '../api/modules/favorite.api.js'
 
 import Rate from '../components/common/Rate';
 import Container from '../components/common/Container';
 import ImageHeader from '../components/common/ImageHeader';
 
-import { setGlobalLoading } from '../redux/features/globalLoadingSlice';
-import { setAuthModalOpen } from '../redux/features/authModalSlice';
-import { addFavorite, removeFavorite } from '../redux/features/userSlice';
+import { setGlobalLoading } from '../redux/features/globalLoadingSlice.js';
+import { setAuthModalOpen } from '../redux/features/authModalSlice.js';
+import { addFavorite, removeFavorite } from '../redux/features/userSlice.js';
+///////
+
 
 
 const MediaDetail = () => {
 
     const { mediaType, mediaId } = useParams();
 
-    const { user, listFavorites } = useSelector((state) => state.user);
+    const { user, listFavorites: listFavourites } = useSelector((state) => state.user);
 
     const [media, setMedia] = useState();
     const [isFavorite, setIsFavorite] = useState(false);
     const [onRequest, setOnRequest] = useState(false);
-    const [genres, setGenres] = useState(false);
+    const [genres, setGenres] = useState([]);
 
     const dispatch = useDispatch();
 
     const videoRef = useRef(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const getMedia = async () => {
             dispatch(setGlobalLoading(true));
             const { response, err } = await mediaApi.getDetail({mediaType, mediaId});

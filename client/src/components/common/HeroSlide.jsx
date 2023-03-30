@@ -15,8 +15,8 @@ import uiConfigs from "../../configs/ui.config";
 import Rate from "./Rate";
 
 import tmdbConfigs from "../../api/configs/tmdb.configs";
-import genreApi from "../../modules/genre.api";
-import mediaApi from "../../modules/media.api";
+import genreApi from "../../api/modules/genre.api";
+import mediaApi from "../../api/modules/media.api";
 
 const HeroSlide = ({ mediaType, mediaCategory }) => {
   const theme = useTheme();

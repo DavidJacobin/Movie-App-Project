@@ -1,4 +1,4 @@
-import publicClient from "../api/client/public.client.js";
+import publicClient from "../client/public.client.js";
 
 const genreEndpoints = {
     list: ({ mediaType }) => `${mediaType}/genres`

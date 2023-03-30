@@ -1,5 +1,5 @@
-import privateClient from "../api/client/private.client";
-import publicClient from "../api/client/public.client";
+import privateClient from "../client/private.client";
+import publicClient from "../client/public.client";
 
 const userEndpoints = {
   signin: "user/signin",

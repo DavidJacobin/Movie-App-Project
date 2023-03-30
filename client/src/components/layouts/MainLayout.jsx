@@ -8,8 +8,8 @@ import AuthModal from '../common/AuthModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
-import userApi from '../../modules/user.api'
-import favoriteApi from '../../modules/favorite.api'
+import userApi from '../../api/modules/user.api'
+import favoriteApi from '../../api/modules/favorite.api'
 import { setListFavorites, setUser } from '../../redux/features/userSlice'
 
 const MainLayout = () => {

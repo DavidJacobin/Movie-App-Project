@@ -12,7 +12,7 @@ import favoriteUtils from '../../utils/favorite.utils';
 
 const MediaItem = ({ media, mediaType }) => {
 
-    const { listFavourites } = useSelector((state) => state.user);
+    const { listFavourites: listFavorites } = useSelector((state) => state.user);
 
     const [title, setTitle] = useState("");
     const [posterPath, setPosterPath] = useState("");
@@ -48,7 +48,7 @@ const MediaItem = ({ media, mediaType }) => {
                 }}>
                 {mediaType !== "people" && (
                 <>
-                    {favoriteUtils.check({listFavourites, mediaId: media.id}) && (
+                    {favoriteUtils.check({listFavourites: listFavorites, mediaId: media.id}) && (
               <FavIcon
                 color="primary"
                 sx={{
