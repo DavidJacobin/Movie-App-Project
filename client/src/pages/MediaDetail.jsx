@@ -68,135 +68,117 @@ const MediaDetail = () => {
     return (
 
         media ? (
-
             <>
-                <ImageHeader imgPath={tmdbConfigs.backdropPath(media.backdrop_path || media.poster_path)} />
-                <Box
-                    sx={{
-                        color: "primary.contrastText",
-                        ...uiConfigs.style.mainContent
-                    }}
-                >
-
-                    <Box
-                        sx={{
-                            marginTop: { xs: '-10rem', md: "-15rem", lg: "-20rem" }
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                display: "flex",
-                                flexDirection: { md: "row", xs: "column" }
-                            }}
-                        >
-
-                            <Box
-                                sx={{
-                                    width: { xs: "70%", sm: "50%", md: "40%" },
-                                    margin: { xs: "0 auto 2rem", md: "0 2rem 0 0" }
-
-                                }}
-                            >
-                                {/* poster */}
-                                <Box
-                                sx={{
-                                    paddingTop: "140%",
-                                    ...uiConfigs.style.backgroundImage(tmdbConfigs
-                                        .posterPath(media.poster_path || media.backdrop_path))
-                                }}
-                                >
-
-                                </Box>
-                                {/* poster */}
-                                {/* info */}
-
-                                <Box
-                                sx={{
-                                    width: {xs: "100%", md: "60%"},
-                                    color: "text.primary"
-                                }}
-                                >
-                                    <Stack 
-                                    spacing={5}>
-                                        {/* title */}
-                                        <Typography
-                                        variant='h4'
-                                        fontSize={{xs: "1rem", md: "1rem", lg: "2rem"}}
-                                        fontWeight="700"
-
-                                        >
-                                            {`${media.title || media.name} ${mediaType === tmdbConfigs
-                                                .mediaType.movie ? media.release_date.split("-")[0] : media
-                                                .first_air_date.split("-")[0]}`}
-
-                                        </Typography>
-                                        {/*rate*/}
-                                        <Stack direction="row" spacing={1} alignItems="center">
-                                            <Rate value={media.vote_average}/>
-                                            <Divider orientation='vertical'/>
-                                            {genres.map((genre, index) => (
-                                                <Chip
-                                                    label={genre.name}
-                                                    variant="filled"
-                                                    color="primary"
-                                                    key={index}
-                                                >
-
-                                                </Chip>
-                                            ))}
-
-                                        </Stack>
-                                        {/*overview*/}
-                                        <Typography
-                                        variant='body1'
-                                        sx={{...uiConfigs.style.typoLines(5)}}
-                                        >
-                                            {media.overview}
-                                        </Typography>
-                                        
-                                        {/*buttons */}
-                                        <Stack direction="row" spacing={1}>
-                                            <LoadingButton 
-                                            variant='text'
-                                            sx={{
-                                                width: "max-content",
-                                                "& .MuiButton-starIcon": {marginRight: "0"}
-                                            }}
-                                            size="large"
-                                            startIcon={isFavorite ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
-                                            loadingPosition="start"
-                                            loading={onRequest}
-                                            />
-                                            <Button
-                                            variant='contained'
-                                            sx={{width: "max-contend"}}
-                                            size="large"
-                                            startIcon={<PlayArrowIcon/>}
-                                            onClick={() => videoRef.current.scrollIntoView()}
-                                            >
-                                                Watch Now
-                                            </Button>
-                                            
-
-                                        </Stack>
-                                    </Stack>
-
-                                </Box>
-                                {/* info */}
-
-
-                            </Box>
-
-                        </Box>
-
-
+              <ImageHeader imgPath={tmdbConfigs.backdropPath(media.backdrop_path || media.poster_path)} />
+              <Box sx={{
+                color: "primary.contrastText",
+                ...uiConfigs.style.mainContent
+              }}>
+                {/* media content */}
+                <Box sx={{
+                  marginTop: { xs: "-10rem", md: "-15rem", lg: "-20rem" }
+                }}>
+                  <Box sx={{
+                    display: "flex",
+                    flexDirection: { md: "row", xs: "column" }
+                  }}>
+                    {/* poster */}
+                    <Box sx={{
+                      width: { xs: "70%", sm: "50%", md: "40%" },
+                      margin: { xs: "0 auto 2rem", md: "0 2rem 0 0" }
+                    }}>
+                      <Box sx={{
+                        paddingTop: "140%",
+                        ...uiConfigs.style.backgroundImage(tmdbConfigs.posterPath(media.poster_path || media.backdrop_path))
+                      }} />
                     </Box>
+                    {/* poster */}
+      
+                    {/* media info */}
+                    <Box sx={{
+                      width: { xs: "100%", md: "60%" },
+                      color: "text.primary"
+                    }}>
+                      <Stack spacing={5}>
+                        {/* title */}
+                        <Typography
+                          variant="h4"
+                          fontSize={{ xs: "2rem", md: "2rem", lg: "4rem" }}
+                          fontWeight="700"
+                          sx={{ ...uiConfigs.style.typoLines(2, "left") }}
+                        >
+                          {`${media.title || media.name} ${mediaType === tmdbConfigs.mediaType.movie ? media.release_date.split("-")[0] : media.first_air_date.split("-")[0]}`}
+                        </Typography>
+                        {/* title */}
+      
+                        {/* rate and genres */}
+                        <Stack direction="row" spacing={1} alignItems="center">
+                          {/* rate */}
+                          <Rate value={media.vote_average} />
+                          {/* rate */}
+                          <Divider orientation="vertical" />
+                          {/* genres */}
+                          {genres.map((genre, index) => (
+                            <Chip
+                              label={genre.name}
+                              variant="filled"
+                              color="primary"
+                              key={index}
+                            />
+                          ))}
+                          {/* genres */}
+                        </Stack>
+                        {/* rate and genres */}
+      
+                        {/* overview */}
+                        <Typography
+                          variant="body1"
+                          sx={{ ...uiConfigs.style.typoLines(5) }}
+                        >
+                          {media.overview}
+                        </Typography>
+                        {/* overview */}
+      
+                        {/* buttons */}
+                        <Stack direction="row" spacing={1}>
+                          <LoadingButton
+                            variant="text"
+                            sx={{
+                              width: "max-content",
+                              "& .MuiButon-starIcon": { marginRight: "0" }
+                            }}
+                            size="large"
+                            startIcon={isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                            loadingPosition="start"
+                            loading={onRequest}
+                            onClick={isFavorite}
+                          />
+                          <Button
+                            variant="contained"
+                            sx={{ width: "max-content" }}
+                            size="large"
+                            startIcon={<PlayArrowIcon />}
+                            onClick={() => videoRef.current.scrollIntoView()}
+                          >
+                            watch now
+                          </Button>
+                        </Stack>
+                        {/* buttons */}
+      
+                        {/* cast */}
+                        
+                        {/* cast */}
+                      </Stack>
+                    </Box>
+                    {/* media info */}
+                  </Box>
                 </Box>
+                
+                
+              </Box>
             </>
-        ) : null
-
-
-    )
-}
+          ) : null
+        );
+};
 
 export default MediaDetail
