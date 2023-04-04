@@ -24,6 +24,7 @@ import { addFavorite, removeFavorite } from '../redux/features/userSlice.js';
 import { color } from '@mui/system';
 import PlayArrow from '@mui/icons-material/PlayArrow';
 import Trailer from '../components/common/Trailer.jsx';
+import MediaReview from '../components/common/MediaReview.jsx';
 ///////
 
 
@@ -235,11 +236,14 @@ const MediaDetail = () => {
           >
             <Container header="Trailer">
               <Trailer videos={media.videos.results.splice(0,1)}>
-
               </Trailer>
             </Container>
           </div>
         </Box>
+
+        {/*media reviews */}
+
+        <MediaReview reviews={media.reviews} media={media} mediaType={mediaType}/>
       </>
     ) : null
   );

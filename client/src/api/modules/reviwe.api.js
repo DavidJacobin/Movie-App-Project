@@ -6,7 +6,7 @@ const reviewEndpoints = {
     remove: ({ reviewId }) => `reviews/${reviewId}`
 };
 
-const reviweApi = {
+const reviewApi = {
     add: async ({
         mediaId,
         mediaType,
@@ -32,7 +32,7 @@ const reviweApi = {
     },
     remove: async ({ reviewId}) => {
         try {
-            const response = await privateClient.post(reviewEndpoints.remove({reviewId}),);
+            const response = await privateClient.delete(reviewEndpoints.remove({reviewId}),);
             return { response }
         } catch (error) {
             return {error}
@@ -40,7 +40,7 @@ const reviweApi = {
     },
     getList: async () => {
         try {
-            const response = await privateClient.post(reviewEndpoints.list);
+            const response = await privateClient.get(reviewEndpoints.list);
             return { response }
         } catch (error) {
             return {error}
@@ -48,4 +48,4 @@ const reviweApi = {
     },
 };
 
-export default reviweApi;
+export default reviewApi;
